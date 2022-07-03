@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from datetime import datetime
-from AppCoder.models import Curso
+from AppCoder.models import Curso, Estudiante
 # Create your views here.
 
 def saludo(request):
@@ -12,6 +12,8 @@ def saludo(request):
 def saludar_a(request, nombre):
     return HttpResponse(f"Hola cómo estas {nombre.capitalize()}")
 
+def mostrar_index(request):
+    return render(request, "AppCoder/index.html",{"mi_titulo": "Hola es mi primer website!!!"})
 
 def saludo_personalizado (request):
 
@@ -19,7 +21,7 @@ def saludo_personalizado (request):
 
     if request.GET:
         context["nombre"] = request.GET["nombre"]
-    return render(request,"AppCoder/index.html", context)
+    return render(request,"AppCoder/index0.html", context)
 
 def calculo_imc(request):
     context = {
@@ -35,7 +37,7 @@ def calculo_imc(request):
 def listar_cursos(request):
     context= {}
     
-    context["cursos"] = Curso.objects.all()
+    context["cursos"] = Curso.objects.all() #modelo
     return render(request, "AppCoder/lista_cursos.html", context) #template
 
 def listar_estudiantes(request):
