@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from manejador_contenido.views import mostrar_home, mostrar_profile, mostrar_message
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('AppCoder.urls'))
+    path('', include('AppCoder.urls')),
+    path('home/', mostrar_home),
+    path('profile/', mostrar_profile),
+    path('message/', mostrar_message),
     ]
